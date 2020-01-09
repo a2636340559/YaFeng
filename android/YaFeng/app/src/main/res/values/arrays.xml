@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tags_values">
+        <item>Android</item>
+        <item>Javascript</item>
+        <item>React Native</item>
+        <item>Kotlin</item>
+        <item>C++</item>
+        <item>C#</item>
+        <item>Object-C</item>
+    </string-array>
+</resources>

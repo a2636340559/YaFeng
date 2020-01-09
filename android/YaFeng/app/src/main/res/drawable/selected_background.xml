@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/xui_config_color_light_blue" />
+            <corners android:radius="?attr/xui_btn_view_radius" />
+        </shape>
+    </item>
+
+</selector>
