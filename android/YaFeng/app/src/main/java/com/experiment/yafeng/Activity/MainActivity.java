@@ -297,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
         popupWindow.setContentView(view);
         popupWindow.setHeight(450);
         popupWindow.setWidth(450);
+        //账号
         TextView account = view.findViewById(R.id.account1);
         account.setOnClickListener(new View.OnClickListener() { //点击账号
             @Override
@@ -305,11 +306,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //我的收藏
         TextView collect = view.findViewById(R.id.collect1);
         collect.setOnClickListener(new View.OnClickListener() { //点击我的收藏
             @Override
             public void onClick(View v) {
                 getCollect();
+            }
+        });
+
+        //AI诗人
+        TextView aiPoetry=view.findViewById(R.id.ai_poetry);
+        aiPoetry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),AIPoetryActivity.class);
+                intent.putExtra("toolBarTitle", "AI诗人");
+                startActivity(intent);
             }
         });
         //设置点击外部消失
@@ -479,6 +492,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String responseData = response.body().string();
+                    System.out.println("STRINGGGGGGGGGGGGGGGGGGGG:"+responseData);
                     try {
                         JSONObject jsonObject = new JSONObject(responseData);
                         JSONArray jsonArray = new JSONArray();

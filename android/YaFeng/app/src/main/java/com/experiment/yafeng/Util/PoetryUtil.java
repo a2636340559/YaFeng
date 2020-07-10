@@ -1,5 +1,7 @@
 package com.experiment.yafeng.Util;
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -8,6 +10,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.Call;
@@ -16,6 +20,26 @@ import okhttp3.Response;
 public class PoetryUtil {
 
     static JSONObject resultObject;
+
+    static List<String> styles= Arrays.asList("五言", "七言");
+    static List<String>poem_tags=Arrays.asList("绝句", "藏头诗");
+    static HashMap<String,String> poem_type=new HashMap<String,String>();
+    static
+        {
+            poem_type.put("绝句","JJ");
+           // poem_type.put("词","SC");
+            poem_type.put("藏头诗","CT");
+        }
+
+    static HashMap<String,Integer> poemStyle=new HashMap<String, Integer>();
+    static
+    {
+        poemStyle.put("五言",5);
+        poemStyle.put("七言",7);
+    }
+
+
+    static List<String> ci_pai=Arrays.asList("归字谣","如梦令","梧桐影","渔歌子","捣练子","忆江南","忆王孙","河满子");
 
     static String[] type=
             {
@@ -128,7 +152,6 @@ public class PoetryUtil {
         return typeTagList;
     }
 
-
     public static List<String> getDynastyList() {
 
         List<String> dynastyList=new ArrayList<String>();
@@ -212,4 +235,13 @@ public class PoetryUtil {
     {
         return type;
     }
+
+    public static List<String> getStyles()
+    {
+        return styles;
+    }
+    public static List<String> getPoemTags(){return poem_tags;};
+    public static List<String> getCiPai(){return ci_pai;};
+    public static HashMap<String,String> getPoemType(){return poem_type;};
+    public static HashMap<String,Integer> getPoemStyle(){return poemStyle;};
 }

@@ -47,8 +47,6 @@ public interface PoetryDAO extends JpaRepository<Poetry,Integer> {
     @Query(value = "select * from poetryDetail where content like %?1"+"%",nativeQuery = true)
     public Poetry getPoetryDetailBy(String content);
 
-
-
     /*
     @根据搜索框内容获取诗词
      */

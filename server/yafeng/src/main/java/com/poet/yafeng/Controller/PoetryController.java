@@ -8,12 +8,8 @@ import com.poet.yafeng.Service.PoetryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import javax.validation.constraints.Null;
 
 import java.util.List;
 
@@ -109,10 +105,11 @@ public class PoetryController {
 
     }
 
-    @RequestMapping(value = "/getVideoList",method = RequestMethod.GET)
-    public String[] getVideoList()
+
+    //诗词自动创作
+    @RequestMapping(value = "/autoCreating",method = RequestMethod.POST)
+    public CommonResult autoCreating(String style,int len_of_sentences,String keyword)
     {
-        String videos[]={"mv1.mp4","mv2.mp4","mv3.mp4"};
-        return videos;
+        return poetryService.autoCreating(style,len_of_sentences,keyword);
     }
 }
