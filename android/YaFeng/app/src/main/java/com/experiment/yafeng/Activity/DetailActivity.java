@@ -246,7 +246,7 @@ public class DetailActivity extends AppCompatActivity {
     //根据首句获取诗词详情
     public void getPoetryDetailByContent(String content)
     {
-        String url="http://xx.xx.xx.xx:8080/yafeng-1.0/poetry/getPoetryDetailBy?content="+content;
+        String url="http://39.106.193.194:8080/yafeng-1.0/poetry/getPoetryDetailBy?content="+content;
         HttpUtil.sendOkHttpRequest(url, new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -352,7 +352,7 @@ public class DetailActivity extends AppCompatActivity {
     //收藏
     private void collect(Integer userId,String poetryName,String author)
     {
-        HttpUtil.sendOkHttpRequest("http://xx.xx.xx.xx:8080/yafeng-1.0/user/collect?" +
+        HttpUtil.sendOkHttpRequest("http://39.106.193.194:8080/yafeng-1.0/user/collect?" +
                 "userId="+userId+"&poetryName="+poetryName+"&author="+author,
                 new okhttp3.Callback() {
             @Override
@@ -391,7 +391,7 @@ public class DetailActivity extends AppCompatActivity {
         else
         {
             HttpUtil.sendOkHttpRequest(
-                    "http://xx.xx.xx.xx:8080/yafeng-1.0/user/isStoraged?userId="
+                    "http://39.106.193.194:8080/yafeng-1.0/user/isStoraged?userId="
                             +userId+"&poetryName="+poetryName+"&author="+author,
                     new okhttp3.Callback() {
                 @Override
