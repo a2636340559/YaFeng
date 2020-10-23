@@ -155,7 +155,7 @@ public class PoetryUtil {
     public static List<String> getDynastyList() {
 
         List<String> dynastyList=new ArrayList<String>();
-        HttpUtil.sendOkHttpRequest("http://39.106.193.194:8080/yafeng-1.0/poetry/getAllDynasty", new okhttp3.Callback() {
+        HttpUtil.sendOkHttpRequest("http://xx.xx.xx.xx:8080/yafeng-1.0/poetry/getAllDynasty", new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -191,7 +191,7 @@ public class PoetryUtil {
     public static List<String> getStyleList()
     {
         List<String> styleList=new ArrayList<String>();
-        HttpUtil.sendOkHttpRequest("http://39.106.193.194:8080/yafeng-1.0/poetry/getAllPoemStyle", new okhttp3.Callback() {
+        HttpUtil.sendOkHttpRequest("http://xx.xx.xx.xx:8080/yafeng-1.0/poetry/getAllPoemStyle", new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
