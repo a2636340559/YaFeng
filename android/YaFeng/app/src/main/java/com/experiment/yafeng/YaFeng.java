@@ -20,6 +20,7 @@ public class YaFeng extends Application {
     public Integer getUserId() {
         return userId;
     }
+
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
@@ -27,6 +28,7 @@ public class YaFeng extends Application {
     public boolean isLogin() {
         return login;
     }
+
     public void setLogin(boolean login) {
         this.login = login;
     }
@@ -34,13 +36,14 @@ public class YaFeng extends Application {
     public boolean isStorage() {
         return isStorage;
     }
+
     public void setStorage(boolean storage) {
         isStorage = storage;
     }
 
-    private boolean login=false;
+    private boolean login = false;
     private Integer userId;
-    private boolean isStorage=false;
+    private boolean isStorage = false;
 
     static {//static 代码段可以防止内存泄露
         //设置全局的Header构建器
@@ -61,6 +64,7 @@ public class YaFeng extends Application {
             }
         });
     }
+
     @Override
     public void onCreate() {
         XUI.init(this); //初始化UI框架

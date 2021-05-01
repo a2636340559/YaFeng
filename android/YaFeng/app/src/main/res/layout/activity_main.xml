@@ -1,265 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:zhy="http://schemas.android.com/tools"
-    android:id="@+id/drawerlayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                                           xmlns:app="http://schemas.android.com/apk/res-auto"
+                                           xmlns:zhy="http://schemas.android.com/tools"
+                                           android:id="@+id/drawerlayout"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="match_parent">
 
 
     <!--主页面-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/titleBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/xui_config_color_titlebar"
-            android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="parent">
+                android:id="@+id/titleBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xui_config_color_titlebar"
+                android:textAlignment="center"
+                app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="雅风"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="雅风"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
 
             <ImageView
-                android:id="@+id/menu_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_setting" />
+                    android:id="@+id/menu_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_setting"/>
 
         </androidx.appcompat.widget.Toolbar>
 
         <TextView
-            android:id="@+id/menu_line"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleBar" />
+                android:id="@+id/menu_line"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleBar"/>
 
         <!--主页面-->
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/main_refreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/menu_line">
-
-            <ScrollView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_refreshLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
-                app:layout_constraintTop_toBottomOf="@id/main_refreshLayout">
+                app:layout_constraintTop_toBottomOf="@id/menu_line">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+            <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/titleBar">
+                    android:paddingBottom="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/main_refreshLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/titleBar">
 
                     <!--每日一句-->
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/dailySentence"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="100dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/sentence"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="荷花开后西湖好，载酒来时。"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            app:layout_constraintTop_toTopOf="@id/dailySentence" />
-
-                        <LinearLayout
+                            android:id="@+id/dailySentence"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="100dp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/sentence">
+                            app:layout_constraintTop_toTopOf="parent">
 
-                            <TextView
-                                android:id="@+id/tag1"
+                        <TextView
+                                android:id="@+id/sentence"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="荷花开后西湖好，载酒来时。"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintTop_toTopOf="@id/dailySentence"/>
+
+                        <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="华东"
-                                android:textSize="15dp" />
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/sentence">
 
                             <TextView
-                                android:id="@+id/tag2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:text="西湖"
-                                android:textSize="15dp" />
+                                    android:id="@+id/tag1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="华东"
+                                    android:textSize="15dp"/>
+
+                            <TextView
+                                    android:id="@+id/tag2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="西湖"
+                                    android:textSize="15dp"/>
                         </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <!--搜索框-->
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/search_bar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
-                        android:background="@drawable/round_editstyle"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/dailySentence">
-
-                        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
-                            android:id="@+id/search"
-                            style="@style/EditText.Normal"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:hint="输入诗名或作者或诗句进行查询"
-                            android:textAlignment="center"
-                            android:textColorHint="@color/xui_config_color_titlebar"
-                            android:textSize="15dp"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintWidth_percent="0.8"
-                            app:met_autoValidate="true"
-                            app:met_errorMessage="请输入中文字符"
-                            app:met_hideUnderline="true"
-                            app:met_iconPadding="8dp"
-                            app:met_regexp="[\u4e00-\u9fa5|\s]+"
-                            app:met_underlineColor="#fff"
-                            app:met_validateOnFocusLost="true" />
-
-                        <ImageView
-                            android:id="@+id/search_button"
+                            android:id="@+id/search_bar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/ic_search"
-                            app:layout_constraintLeft_toRightOf="@id/search"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            android:layout_marginTop="50dp"
+                            android:background="@drawable/round_editstyle"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/dailySentence">
+
+                        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                                android:id="@+id/search"
+                                style="@style/EditText.Normal"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:hint="输入诗名或作者或诗句进行查询"
+                                android:textAlignment="center"
+                                android:textColorHint="@color/xui_config_color_titlebar"
+                                android:textSize="15dp"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintWidth_percent="0.8"
+                                app:met_autoValidate="true"
+                                app:met_errorMessage="请输入中文字符"
+                                app:met_hideUnderline="true"
+                                app:met_iconPadding="8dp"
+                                app:met_regexp="[\u4e00-\u9fa5|\s]+"
+                                app:met_underlineColor="#fff"
+                                app:met_validateOnFocusLost="true"/>
+
+                        <ImageView
+                                android:id="@+id/search_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="10dp"
+                                android:src="@drawable/ic_search"
+                                app:layout_constraintLeft_toRightOf="@id/search"
+                                app:layout_constraintTop_toTopOf="parent"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <!--每日一诗-->
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/poet"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/search_bar">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/labelbar"
+                            android:id="@+id/poet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="50dp"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toBottomOf="@+id/search_bar">
 
-                            <TextView
-                                android:id="@+id/label"
-                                android:layout_width="5dp"
-                                android:layout_height="20dp"
-                                android:layout_marginLeft="20dp"
-                                android:background="@drawable/label_style"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/labelbar"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:text="每日一诗"
-                                app:layout_constraintLeft_toRightOf="@id/label"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                    android:id="@+id/label"
+                                    android:layout_width="5dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:background="@drawable/label_style"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="7dp"
+                                    android:text="每日一诗"
+                                    app:layout_constraintLeft_toRightOf="@id/label"
+                                    app:layout_constraintTop_toTopOf="parent"/>
 
                             <com.xuexiang.xui.widget.textview.label.LabelButtonView
-                                android:id="@+id/detail"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="20dp"
-                                android:text="查看详情"
-                                android:textColor="@color/xui_config_color_titlebar"
-                                android:textSize="15dp"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                    android:id="@+id/detail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="20dp"
+                                    android:text="查看详情"
+                                    android:textColor="@color/xui_config_color_titlebar"
+                                    android:textSize="15dp"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/poetpanel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/labelbar">
-
-                            <TextView
-                                android:id="@+id/title"
+                                android:id="@+id/poetpanel"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text="title"
-                                android:textAlignment="center"
-                                android:textSize="45px"
-                                android:textStyle="bold"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toBottomOf="@id/labelbar">
 
                             <TextView
-                                android:id="@+id/author"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="dynasty . author"
-                                android:textAlignment="center"
-                                android:textSize="45px"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/title" />
+                                    android:id="@+id/title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:text="title"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
 
                             <TextView
-                                android:id="@+id/content"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginRight="5dp"
-                                android:lineSpacingMultiplier="1.3"
-                                android:text="content"
-                                android:textAlignment="center"
-                                android:textSize="45px"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/author" />
+                                    android:id="@+id/author"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="dynasty . author"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/title"/>
+
+                            <TextView
+                                    android:id="@+id/content"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:lineSpacingMultiplier="1.3"
+                                    android:text="content"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/author"/>
 
                             <com.xuexiang.xui.widget.button.roundbutton.RoundButton
-                                android:id="@+id/test_button"
-                                style="@style/RoundButton.Auto"
-                                android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:layout_marginTop="30dp"
-                                android:text="测试一下"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/content"
-                                app:layout_constraintWidth_percent="0.6" />
+                                    android:id="@+id/test_button"
+                                    style="@style/RoundButton.Auto"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_marginTop="30dp"
+                                    android:text="测试一下"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/content"
+                                    app:layout_constraintWidth_percent="0.6"/>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -277,174 +277,174 @@
 
     <!--侧边菜单-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        android:background="#fff"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ScrollView
-            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="650dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="#fff"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="650dp"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/type_panel"
+            <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="35dp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_height="match_parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/label1"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/type_panel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="35dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/type_label"
-                            android:layout_width="5dp"
-                            android:layout_height="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:background="@drawable/type_label_style"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/label1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:text="形式"
-                            app:layout_constraintLeft_toRightOf="@id/type_label"
-                            app:layout_constraintTop_toTopOf="parent" />
+                                android:id="@+id/type_label"
+                                android:layout_width="5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:background="@drawable/type_label_style"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7dp"
+                                android:text="形式"
+                                app:layout_constraintLeft_toRightOf="@id/type_label"
+                                app:layout_constraintTop_toTopOf="parent"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <com.zhy.view.flowlayout.TagFlowLayout
-                        android:id="@+id/type_float"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+                            android:id="@+id/type_float"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/dynasty_panel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/type_panel">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/label2"
+                        android:id="@+id/dynasty_panel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toBottomOf="@id/type_panel">
 
-                        <TextView
-                            android:id="@+id/type_label2"
-                            android:layout_width="5dp"
-                            android:layout_height="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:background="@drawable/dynasty_label_style"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/label2"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:text="朝代"
-                            app:layout_constraintLeft_toRightOf="@id/type_label2"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                                android:id="@+id/type_label2"
+                                android:layout_width="5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:background="@drawable/dynasty_label_style"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7dp"
+                                android:text="朝代"
+                                app:layout_constraintLeft_toRightOf="@id/type_label2"
+                                app:layout_constraintTop_toTopOf="parent"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <com.zhy.view.flowlayout.TagFlowLayout
-                        android:id="@+id/dynasty_float"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="15dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/label2"
-                        zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+                            android:id="@+id/dynasty_float"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="15dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/label2"
+                            zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/style_panel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dynasty_panel">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/label3"
+                        android:id="@+id/style_panel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toBottomOf="@id/dynasty_panel">
 
-                        <TextView
-                            android:id="@+id/type_label3"
-                            android:layout_width="5dp"
-                            android:layout_height="20dp"
-                            android:layout_marginLeft="20dp"
-                            android:background="@drawable/label_style"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/label3"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:text="类型"
-                            app:layout_constraintLeft_toRightOf="@id/type_label3"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                                android:id="@+id/type_label3"
+                                android:layout_width="5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:background="@drawable/label_style"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7dp"
+                                android:text="类型"
+                                app:layout_constraintLeft_toRightOf="@id/type_label3"
+                                app:layout_constraintTop_toTopOf="parent"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <com.zhy.view.flowlayout.TagFlowLayout
-                        android:id="@+id/style_float"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/label3"
-                        zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+                            android:id="@+id/style_float"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="20dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/label3"
+                            zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
-            android:id="@+id/sure_button"
-            style="@style/RoundButton.Auto"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:text="确定"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/scrollView"
-            app:layout_constraintWidth_percent="0.6" />
+                android:id="@+id/sure_button"
+                style="@style/RoundButton.Auto"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:text="确定"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scrollView"
+                app:layout_constraintWidth_percent="0.6"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

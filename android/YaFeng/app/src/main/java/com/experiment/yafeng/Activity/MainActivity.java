@@ -22,6 +22,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import com.experiment.yafeng.Constant.SysConstant;
 import com.experiment.yafeng.Modal.Poetry;
 import com.experiment.yafeng.R;
 import com.experiment.yafeng.Util.HttpUtil;
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     List<Poetry> poetryList = gson.fromJson(collectObject.toString(),
                             new TypeToken<List<Poetry>>() {
-                    }.getType());
+                            }.getType());
                     Intent intent = new Intent(MainActivity.this,
                             PoemListActivity.class);
                     intent.putExtra("from", "collect");
@@ -247,27 +248,28 @@ public class MainActivity extends AppCompatActivity {
     //随机获取一首古诗
     private void getOnePoetry() {
         HttpUtil.sendOkHttpRequest(
-                "http://39.106.193.194:8080/yafeng-1.0/poetry/getOnePoetry",
+                SysConstant.YA_FENG_SERVER+"/yafeng-1.0/poetry/getOnePoetry",
                 new okhttp3.Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                isLoad = false;
-                e.printStackTrace();
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String responseData = response.body().string();
-                try {
-                    poetryObject = new JSONObject(responseData);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                Message message = new Message();
-                message.what = COMPLETED;
-                isLoad = false;
-                handler.sendMessage(message);
-            }
-        });
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        isLoad = false;
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        try {
+                            poetryObject = new JSONObject(responseData);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Message message = new Message();
+                        message.what = COMPLETED;
+                        isLoad = false;
+                        handler.sendMessage(message);
+                    }
+                });
     }
 
     private void initView() {
@@ -295,8 +297,8 @@ public class MainActivity extends AppCompatActivity {
         PopupWindow popupWindow = new PopupWindow(getContext());
         View view = LayoutInflater.from(this).inflate(R.layout.layout_menu, null);
         popupWindow.setContentView(view);
-        popupWindow.setHeight(450);
-        popupWindow.setWidth(450);
+        popupWindow.setHeight(600);
+        popupWindow.setWidth(550);
         //账号
         TextView account = view.findViewById(R.id.account1);
         account.setOnClickListener(new View.OnClickListener() { //点击账号
@@ -316,11 +318,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //AI诗人
-        TextView aiPoetry=view.findViewById(R.id.ai_poetry);
+        TextView aiPoetry = view.findViewById(R.id.ai_poetry);
         aiPoetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),AIPoetryActivity.class);
+                Intent intent = new Intent(getContext(), AIPoetryActivity.class);
                 intent.putExtra("toolBarTitle", "AI诗人");
                 startActivity(intent);
             }
@@ -482,43 +484,42 @@ public class MainActivity extends AppCompatActivity {
         {
             userId = yaFeng.getUserId();//获取用户标识
             HttpUtil.sendOkHttpRequest(
-                    "http://39.106.193.194:8080/yafeng-1.0/user/getCollect?userId=" + userId,
+                    SysConstant.YA_FENG_SERVER+"/yafeng-1.0/user/getCollect?userId=" + userId,
                     new okhttp3.Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    String responseData = response.body().string();
-                    System.out.println("STRINGGGGGGGGGGGGGGGGGGGG:"+responseData);
-                    try {
-                        JSONObject jsonObject = new JSONObject(responseData);
-                        JSONArray jsonArray = new JSONArray();
-                        if (jsonObject.getJSONArray("data") == null) {
-                            Log.d("getCollect:", "无数据");
-                        } else
-                            jsonArray = jsonObject.getJSONArray("data");
-                        if (jsonArray.length() == 0)//没有收藏数据
-                        {
-                            Message message = new Message();
-                            message.what = RESPONSE_FAIL;
-                            handler.sendMessage(message);
-                        } else { //成功获取收藏数据
-                            collectObject = jsonArray;
-                            Message message = new Message();
-                            message.what = RESPONSE_SUCCESS;
-                            handler.sendMessage(message);
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            e.printStackTrace();
                         }
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }
-        else {
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            String responseData = response.body().string();
+                            System.out.println("STRINGGGGGGGGGGGGGGGGGGGG:" + responseData);
+                            try {
+                                JSONObject jsonObject = new JSONObject(responseData);
+                                JSONArray jsonArray = new JSONArray();
+                                if (jsonObject.getJSONArray("data") == null) {
+                                    Log.d("getCollect:", "无数据");
+                                } else
+                                    jsonArray = jsonObject.getJSONArray("data");
+                                if (jsonArray.length() == 0)//没有收藏数据
+                                {
+                                    Message message = new Message();
+                                    message.what = RESPONSE_FAIL;
+                                    handler.sendMessage(message);
+                                } else { //成功获取收藏数据
+                                    collectObject = jsonArray;
+                                    Message message = new Message();
+                                    message.what = RESPONSE_SUCCESS;
+                                    handler.sendMessage(message);
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+        } else {
             Toast.makeText(getContext(), "请先登录", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);//跳转至登录页

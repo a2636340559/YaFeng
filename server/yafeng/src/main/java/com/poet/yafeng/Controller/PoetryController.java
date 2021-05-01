@@ -112,4 +112,6 @@ public class PoetryController {
     {
         return poetryService.autoCreating(style,len_of_sentences,keyword);
     }
+
+
 }

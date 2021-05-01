@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.LoginActivity">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".Activity.LoginActivity">
 
     <ImageView
-        android:id="@+id/logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="logo"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@id/account"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.3" />
+            android:id="@+id/logo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="logo"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toTopOf="@id/account"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.3"/>
 
     <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
-        android:id="@+id/account"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="account"
-        android:layout_marginTop="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintWidth_percent="0.6"
-        app:met_clearButton="true"
-        app:met_floatingLabel="highlight" />
+            android:id="@+id/account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="account"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            app:layout_constraintWidth_percent="0.6"
+            app:met_clearButton="true"
+            app:met_floatingLabel="highlight"/>
 
     <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
-        android:id="@+id/password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="password"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/account"
-        app:layout_constraintWidth_percent="0.6"
-        app:met_floatingLabel="highlight"
-        app:met_passWordButton="true"
-        />
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="password"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/account"
+            app:layout_constraintWidth_percent="0.6"
+            app:met_floatingLabel="highlight"
+            app:met_passWordButton="true"
+    />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/check"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintWidth_percent="0.6"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
+            android:id="@+id/check"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="记住密码"
-            android:layout_marginTop="7dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintWidth_percent="0.6"
+            app:layout_constraintTop_toBottomOf="@id/password"
             app:layout_constraintLeft_toLeftOf="parent"
-            />
+            app:layout_constraintRight_toRightOf="parent">
+        <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="记住密码"
+                android:layout_marginTop="7dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+        />
 
-    <CheckBox
-        android:id="@+id/remember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/text"/>
+        <CheckBox
+                android:id="@+id/remember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/text"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.xuexiang.xui.widget.button.roundbutton.RoundButton
-        android:id="@+id/login_button"
-        style="@style/RoundButton.Auto"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:text="登录/注册"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/check"
-        app:layout_constraintWidth_percent="0.6" />
+            android:id="@+id/login_button"
+            style="@style/RoundButton.Auto"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:text="登录/注册"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/check"
+            app:layout_constraintWidth_percent="0.6"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

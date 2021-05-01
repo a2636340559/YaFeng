@@ -22,6 +22,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.experiment.yafeng.Constant.SysConstant;
 import com.experiment.yafeng.Modal.PoetryDetail;
 import com.experiment.yafeng.R;
 import com.experiment.yafeng.Util.HttpUtil;
@@ -57,7 +58,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView reference;
     private TextView appreciation;
     private LinearLayout linearLayout;
-    private Button  test_button;
+    private Button test_button;
     private TextView menu_line;
     private TextView poem_title;
     private TextView poem_author;
@@ -67,13 +68,13 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView author_img;
     private ImageView icon_collect;
     private TextView author_content;
-    private Boolean isLoad=false;
+    private Boolean isLoad = false;
     private JSONObject responseObject;
     private PoetryDetail poetryDetail;
     private final int COMPLETED = 1;
     private final int COLLECT = 2;
-    private final int STORAGE=3;
-    private final int TO_WEBVIEW=4;
+    private final int STORAGE = 3;
+    private final int TO_WEBVIEW = 4;
     private List<String> tags;
 
     private Handler handler = new Handler() {
@@ -82,37 +83,37 @@ public class DetailActivity extends AppCompatActivity {
             if (message.what == COMPLETED) {
                 try {
                     poem_title.setText(poetryDetail.getName());
-                    String author=poetryDetail.getDynasty()+"."+poetryDetail.getAuthor();
+                    String author = poetryDetail.getDynasty() + "." + poetryDetail.getAuthor();
                     poem_author.setText(author);
                     poem_content.setText(poetryDetail.getContent());
-                    Bitmap bitmap=getURLImage(poetryDetail.getImg());
+                    Bitmap bitmap = getURLImage(poetryDetail.getImg());
                     author_img.setImageBitmap(bitmap);
                     author_content.setText(poetryDetail.getAuthorDetail());
                     reference.setText(poetryDetail.getReference());
                     annotation.setText(poetryDetail.getAnnotation());
                     appreciation.setText(poetryDetail.getAppreciation());
                     translation.setText(poetryDetail.getTranslation());
-                    tags=spiltBySpace(poetryDetail.getTag());
+                    tags = spiltBySpace(poetryDetail.getTag());
                     initTagFlowLayout();
                     isLoad = true;
-                    isStoraged(poetryDetail.getName(),poetryDetail.getAuthor());
+                    isStoraged(poetryDetail.getName(), poetryDetail.getAuthor());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            if(message.what==COLLECT)//收藏成功
+            if (message.what == COLLECT)//收藏成功
             {
                 icon_collect.setImageResource(R.drawable.ic_collect);
-                Toast.makeText(getContext(),"收藏成功",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "收藏成功", Toast.LENGTH_LONG).show();
             }
-            if(message.what==STORAGE)//设置收藏图标
+            if (message.what == STORAGE)//设置收藏图标
             {
                 icon_collect.setImageResource(R.drawable.ic_collect);
             }
-            if(message.what==TO_WEBVIEW)//打开古诗文网网页
+            if (message.what == TO_WEBVIEW)//打开古诗文网网页
             {
-                Toast.makeText(getContext(),"暂时没有数据哦,去网上看看",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(DetailActivity.this, WebViewActivity.class);
+                Toast.makeText(getContext(), "暂时没有数据哦,去网上看看", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(DetailActivity.this, WebViewActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -121,16 +122,14 @@ public class DetailActivity extends AppCompatActivity {
     };
 
     @Override
-    public  boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
-                isLoad=false;
-                tags=null;
-                poetryDetail=null;
-                responseObject=null;
+                isLoad = false;
+                tags = null;
+                poetryDetail = null;
+                responseObject = null;
                 break;
         }
         return true;
@@ -148,15 +147,15 @@ public class DetailActivity extends AppCompatActivity {
         initView();
         setSupportActionBar(toolbar);//设置toolbar
         getSupportActionBar().setDisplayShowTitleEnabled(false);//屏蔽toolbar默认标题显示
-        ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
         }//设置返回图标显示
 
-        toolbarTitle=getIntent().getStringExtra("toolbarTitle");
-        String content=getIntent().getStringExtra("content");
-        Log.d("toolBarTitle---------",toolbarTitle);
+        toolbarTitle = getIntent().getStringExtra("toolbarTitle");
+        String content = getIntent().getStringExtra("content");
+        Log.d("toolBarTitle---------", toolbarTitle);
         titleText.setText(toolbarTitle);
 
         icon_collect.setOnClickListener(new View.OnClickListener() {
@@ -172,26 +171,26 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
 
-                Intent intent=new Intent(getContext(),PoemListActivity.class);
-                intent.putExtra("from","detail");
-                intent.putExtra("tag",tags.get(position));
-                intent.putExtra("toolBarTitle",tags.get(position));
+                Intent intent = new Intent(getContext(), PoemListActivity.class);
+                intent.putExtra("from", "detail");
+                intent.putExtra("tag", tags.get(position));
+                intent.putExtra("toolBarTitle", tags.get(position));
                 startActivity(intent);
                 return true;
             }
         });
 
         //将数据传递给测试页面
-       test_button.setOnClickListener(new View.OnClickListener() {
+        test_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
                 intent = new Intent(getContext(), TestPoemActivity.class);
                 try {
-                    intent.putExtra("title",poetryDetail.getName());
-                    intent.putExtra("dynasty",poetryDetail.getDynasty());
-                    intent.putExtra("author",poetryDetail.getAuthor());
-                    intent.putExtra("content",poetryDetail.getContent());
+                    intent.putExtra("title", poetryDetail.getName());
+                    intent.putExtra("dynasty", poetryDetail.getDynasty());
+                    intent.putExtra("author", poetryDetail.getAuthor());
+                    intent.putExtra("content", poetryDetail.getContent());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -202,32 +201,30 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
-    private void initView()
-    {
-        toolbar=findViewById(R.id.poem_titleBar);
-        titleText=findViewById(R.id.poem_titleText);
-        menu_line=findViewById(R.id.menu_line);
-        annotation=findViewById(R.id.annotation_text);
-        translation=findViewById(R.id.translation_text);
-        appreciation=findViewById(R.id.annotation_text);
-        reference=findViewById(R.id.reference_text);
-        test_button=findViewById(R.id.poem_test_button);
-        poem_title=findViewById(R.id.detail_poem_title);
-        poem_author=findViewById(R.id.detail_poem_author);
-        poem_content=findViewById(R.id.detail_poem_content);
-        tag_flow=findViewById(R.id.tag_flow);
-        author_img=findViewById(R.id.author_img);
-        author_content=findViewById(R.id.author_detail);
-        scrollView=findViewById(R.id.detail_scroll);
-        linearLayout=findViewById(R.id.poem_linnear);
-        icon_collect=findViewById(R.id.poem_menu_icon);
+    private void initView() {
+        toolbar = findViewById(R.id.poem_titleBar);
+        titleText = findViewById(R.id.poem_titleText);
+        menu_line = findViewById(R.id.menu_line);
+        annotation = findViewById(R.id.annotation_text);
+        translation = findViewById(R.id.translation_text);
+        appreciation = findViewById(R.id.annotation_text);
+        reference = findViewById(R.id.reference_text);
+        test_button = findViewById(R.id.poem_test_button);
+        poem_title = findViewById(R.id.detail_poem_title);
+        poem_author = findViewById(R.id.detail_poem_author);
+        poem_content = findViewById(R.id.detail_poem_content);
+        tag_flow = findViewById(R.id.tag_flow);
+        author_img = findViewById(R.id.author_img);
+        author_content = findViewById(R.id.author_detail);
+        scrollView = findViewById(R.id.detail_scroll);
+        linearLayout = findViewById(R.id.poem_linnear);
+        icon_collect = findViewById(R.id.poem_menu_icon);
 
     }
 
-    private void initTagFlowLayout()
-    {
-        tag_flow=findViewById(R.id.tag_flow);
-        final LayoutInflater mInflater =getLayoutInflater();
+    private void initTagFlowLayout() {
+        tag_flow = findViewById(R.id.tag_flow);
+        final LayoutInflater mInflater = getLayoutInflater();
 
         tag_flow.setAdapter(new TagAdapter<String>(tags) {
 
@@ -244,9 +241,8 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     //根据首句获取诗词详情
-    public void getPoetryDetailByContent(String content)
-    {
-        String url="http://39.106.193.194:8080/yafeng-1.0/poetry/getPoetryDetailBy?content="+content;
+    public void getPoetryDetailByContent(String content) {
+        String url = SysConstant.YA_FENG_SERVER+ "/yafeng-1.0/poetry/getPoetryDetailBy?content=" + content;
         HttpUtil.sendOkHttpRequest(url, new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -262,27 +258,25 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     //解析返回数据
-    private void parseJSONWithGSON(String jsonData)
-    {
-        Gson gson=new Gson();
-        JSONObject jsonObject=null;
+    private void parseJSONWithGSON(String jsonData) {
+        Gson gson = new Gson();
+        JSONObject jsonObject = null;
         try {
-            responseObject=new JSONObject(jsonData);
-            if(responseObject.getJSONObject("data")!=null) {
+            responseObject = new JSONObject(jsonData);
+            if (responseObject.getJSONObject("data") != null) {
                 jsonObject = responseObject.getJSONObject("data");
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        PoetryDetail detail=null;
-        if(jsonObject!=null) {//成功获取数据
+        PoetryDetail detail = null;
+        if (jsonObject != null) {//成功获取数据
             detail = gson.fromJson(jsonObject.toString(), PoetryDetail.class);
             poetryDetail = detail;
             Message message = new Message();
             message.what = COMPLETED;
             handler.sendMessage(message);
-        }
-        else//没有数据
+        } else//没有数据
         {
             Message message = new Message();
             message.what = TO_WEBVIEW;
@@ -311,111 +305,102 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     //按空格划分字符串
-    public List<String> spiltBySpace(String tag)
-    {
-        String[] temp=tag.split(" ");
-        List<String> tags=new ArrayList<>();
-        for(int i=0;i<temp.length;i++)
-            if(i<3)
+    public List<String> spiltBySpace(String tag) {
+        String[] temp = tag.split(" ");
+        List<String> tags = new ArrayList<>();
+        for (int i = 0; i < temp.length; i++)
+            if (i < 3)
                 tags.add(temp[i]);
             else
                 break;
 
-        for(int i=0;i<tags.size();i++)
-            System.out.println("SSSSSSSSSSSSSSSSSSS----------------:"+tags.get(i));
+        for (int i = 0; i < tags.size(); i++)
+            System.out.println("SSSSSSSSSSSSSSSSSSS----------------:" + tags.get(i));
         return tags;
 
     }
 
     //检查登录状态
-    public void checkLogin ()
-    {
-        YaFeng yaFeng=(YaFeng)getApplication();
-        boolean isLogin=yaFeng.isLogin();
-        Integer userId=yaFeng.getUserId();
-        if(isLogin)
-        {
-            String poetryName=null;
-            poetryName=poem_title.getText().toString();
-            String author=poetryDetail.getAuthor();
-            collect(userId,poetryName,author);
-        }
-        else
-        {
-            Toast.makeText(getContext(),"请先登录",Toast.LENGTH_LONG);
-            Intent intent=new Intent(DetailActivity.this,LoginActivity.class);
+    public void checkLogin() {
+        YaFeng yaFeng = (YaFeng) getApplication();
+        boolean isLogin = yaFeng.isLogin();
+        Integer userId = yaFeng.getUserId();
+        if (isLogin) {
+            String poetryName = null;
+            poetryName = poem_title.getText().toString();
+            String author = poetryDetail.getAuthor();
+            collect(userId, poetryName, author);
+        } else {
+            Toast.makeText(getContext(), "请先登录", Toast.LENGTH_LONG);
+            Intent intent = new Intent(DetailActivity.this, LoginActivity.class);
             startActivity(intent);
         }
     }
 
 
     //收藏
-    private void collect(Integer userId,String poetryName,String author)
-    {
-        HttpUtil.sendOkHttpRequest("http://39.106.193.194:8080/yafeng-1.0/user/collect?" +
-                "userId="+userId+"&poetryName="+poetryName+"&author="+author,
+    private void collect(Integer userId, String poetryName, String author) {
+        HttpUtil.sendOkHttpRequest(SysConstant.YA_FENG_SERVER+"/yafeng-1.0/user/collect?" +
+                        "userId=" + userId + "&poetryName=" + poetryName + "&author=" + author,
                 new okhttp3.Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                    }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String responseData = response.body().string();
-                int temp=0;
-                try {
-                    JSONObject jsonObject=new JSONObject(responseData);
-                     temp=jsonObject.getInt("data");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                if(temp==1)
-                {
-                    Message message=new Message();
-                    message.what=COLLECT;
-                    handler.sendMessage(message);
-                }
-            }
-        });
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String responseData = response.body().string();
+                        int temp = 0;
+                        try {
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            temp = jsonObject.getInt("data");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if (temp == 1) {
+                            Message message = new Message();
+                            message.what = COLLECT;
+                            handler.sendMessage(message);
+                        }
+                    }
+                });
     }
 
     //判断是否为收藏的诗词
-    private void isStoraged(String poetryName,String author)
-    {
-        YaFeng yaFeng=(YaFeng)getApplication();
-        boolean isLogin=yaFeng.isLogin();
-        int userId=yaFeng.getUserId();
-        if(!isLogin)//未登录时
+    private void isStoraged(String poetryName, String author) {
+        YaFeng yaFeng = (YaFeng) getApplication();
+        boolean isLogin = yaFeng.isLogin();
+        int userId = yaFeng.getUserId();
+        if (!isLogin)//未登录时
             icon_collect.setImageResource(R.drawable.icon_collect1);
-        else
-        {
+        else {
             HttpUtil.sendOkHttpRequest(
-                    "http://39.106.193.194:8080/yafeng-1.0/user/isStoraged?userId="
-                            +userId+"&poetryName="+poetryName+"&author="+author,
+                    SysConstant.YA_FENG_SERVER+"/yafeng-1.0/user/isStoraged?userId="
+                            + userId + "&poetryName=" + poetryName + "&author=" + author,
                     new okhttp3.Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    e.printStackTrace();
-                }
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    String responseData = response.body().string();
-                   boolean temp=false;
-                    try {
-                        JSONObject jsonObject=new JSONObject(responseData);
-                        temp=jsonObject.getBoolean("data");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    if(temp)
-                    {
-                        Message message=new Message();
-                        message.what=STORAGE;
-                        handler.sendMessage(message);
-                    }
-                }
-            });
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            String responseData = response.body().string();
+                            boolean temp = false;
+                            try {
+                                JSONObject jsonObject = new JSONObject(responseData);
+                                temp = jsonObject.getBoolean("data");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            if (temp) {
+                                Message message = new Message();
+                                message.what = STORAGE;
+                                handler.sendMessage(message);
+                            }
+                        }
+                    });
         }
     }
 

@@ -7,7 +7,9 @@ public class Poetry {
     private String content;
     private String tag;
 
-    public Poetry(){}
+    public Poetry() {
+    }
+
     public Poetry(String name, String dynasty, String author, String content, String tag) {
         this.name = name;
         this.dynasty = dynasty;
@@ -19,6 +21,7 @@ public class Poetry {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -26,6 +29,7 @@ public class Poetry {
     public String getDynasty() {
         return dynasty;
     }
+
     public void setDynasty(String dynasty) {
         this.dynasty = dynasty;
     }
@@ -33,6 +37,7 @@ public class Poetry {
     public String getAuthor() {
         return author;
     }
+
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -40,6 +45,7 @@ public class Poetry {
     public String getContent() {
         return content;
     }
+
     public void setContent(String content) {
         this.content = content;
     }
@@ -47,6 +53,7 @@ public class Poetry {
     public String getTag() {
         return tag;
     }
+
     public void setTag(String tag) {
         this.tag = tag;
     }

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="10dp"
-    android:shape="rectangle">
-    <solid android:color="#fff" />
+       android:padding="10dp"
+       android:shape="rectangle">
+    <solid android:color="#fff"/>
 
     <corners
-        android:bottomLeftRadius="30dp"
-        android:bottomRightRadius="30dp"
-        android:topLeftRadius="30dp"
-        android:topRightRadius="30dp" />
+            android:bottomLeftRadius="30dp"
+            android:bottomRightRadius="30dp"
+            android:topLeftRadius="30dp"
+            android:topRightRadius="30dp"/>
 
     <stroke android:color="@color/xui_config_color_titlebar"
-        android:width="2px"
-        />
+            android:width="2px"
+    />
 
 </shape>

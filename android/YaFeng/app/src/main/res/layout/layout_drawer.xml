@@ -1,146 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_gravity="left"
-        android:background="#fff"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/type_panel"
+            android:layout_gravity="left"
+            android:background="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/label1"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/type_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/type_label"
-                    android:layout_width="5dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/type_label_style"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/label1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:text="形式"
-                    app:layout_constraintLeft_toRightOf="@id/type_label"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        android:id="@+id/type_label"
+                        android:layout_width="5dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/type_label_style"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="形式"
+                        app:layout_constraintLeft_toRightOf="@id/type_label"
+                        app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
-                android:id="@+id/type_float"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                app:ftl_check_mode="single"
-                app:layout_constraintTop_toBottomOf="@id/label1" />
+                    android:id="@+id/type_float"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    app:ftl_check_mode="single"
+                    app:layout_constraintTop_toBottomOf="@id/label1"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/dynasty_panel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/type_panel">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/label2"
+                android:id="@+id/dynasty_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/type_panel">
 
-                <TextView
-                    android:id="@+id/type_label2"
-                    android:layout_width="5dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/dynasty_label_style"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/label2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:text="形式"
-                    app:layout_constraintLeft_toRightOf="@id/type_label2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                        android:id="@+id/type_label2"
+                        android:layout_width="5dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/dynasty_label_style"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="形式"
+                        app:layout_constraintLeft_toRightOf="@id/type_label2"
+                        app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
-                android:id="@+id/dynasty_float"
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginTop="20dp"
-                app:ftl_check_mode="single"
-                app:layout_constraintTop_toBottomOf="@id/label2" />
+                    android:id="@+id/dynasty_float"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="20dp"
+                    app:ftl_check_mode="single"
+                    app:layout_constraintTop_toBottomOf="@id/label2"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/style_panel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dynasty_panel">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/label3"
+                android:id="@+id/style_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/dynasty_panel">
 
-                <TextView
-                    android:id="@+id/type_label3"
-                    android:layout_width="5dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/label_style"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/label3"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:text="形式"
-                    app:layout_constraintLeft_toRightOf="@id/type_label3"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                        android:id="@+id/type_label3"
+                        android:layout_width="5dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/label_style"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="形式"
+                        app:layout_constraintLeft_toRightOf="@id/type_label3"
+                        app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <com.xuexiang.xui.widget.flowlayout.FlowTagLayout
-                android:id="@+id/style_float"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:ftl_check_mode="single"
-                app:layout_constraintTop_toBottomOf="@id/label3"
-                />
+                    android:id="@+id/style_float"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:ftl_check_mode="single"
+                    app:layout_constraintTop_toBottomOf="@id/label3"
+            />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -12,12 +12,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableCaching
 @ServletComponentScan
 @SpringBootApplication
-public class YafengApplication {
-//    @Overrideextends SpringBootServletInitializer
+public class YafengApplication  {
+//    @Override
 //    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 //        return builder.sources(YafengApplication.class);
-//    }
-
+//    }extends SpringBootServletInitializer
+//
     public static void main(String[] args) {
         SpringApplication.run(YafengApplication.class, args);
     }

@@ -37,6 +37,7 @@ import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
 import static com.xuexiang.xui.XUI.getContext;
 
 public class AIPoetryActivity extends AppCompatActivity {
@@ -51,51 +52,48 @@ public class AIPoetryActivity extends AppCompatActivity {
     private TagFlowLayout poem_tag_flow;
     private List<String> poem_tags;
     private TagFlowLayout poem_style_flow;
-   // private MaterialSpinner ciPaiSpinner;
-    private HashMap<String,String> poem_type;
-    private HashMap<String,Integer> poem_style;
-    private HashMap<String,String> selectedTag=new HashMap<>();
+    // private MaterialSpinner ciPaiSpinner;
+    private HashMap<String, String> poem_type;
+    private HashMap<String, Integer> poem_style;
+    private HashMap<String, String> selectedTag = new HashMap<>();
     private List<String> styles;
     private List<String> ciPai;
-    private String createdPoem="";
-    private final int GET_POEM_FAIL=0;
+    private String createdPoem = "";
+    private final int GET_POEM_FAIL = 0;
     private final int GET_POEM_SUCCESS = 1;
-    private boolean isCreated=false;
-    private Handler handler=new Handler()
-    {
+    private boolean isCreated = false;
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message message) {
-          if(message.what==GET_POEM_SUCCESS)
-          {
-                  System.out.println("CREATEDPOEMMMM:" + createdPoem);
-                  createdText.setText(createdPoem);
-          }
-          if(message.what==GET_POEM_FAIL)
-          {
-              createdText.setText(" ");
-              Toast.makeText(getContext(),"服务错误，请重试",Toast.LENGTH_LONG).show();
-          }
+            if (message.what == GET_POEM_SUCCESS) {
+                System.out.println("CREATEDPOEMMMM:" + createdPoem);
+                createdText.setText(createdPoem);
+            }
+            if (message.what == GET_POEM_FAIL) {
+                createdText.setText(" ");
+                Toast.makeText(getContext(), "服务错误，请重试", Toast.LENGTH_LONG).show();
+            }
         }
 
     };
-    private void initView()
-    {
-        poem_tags=PoetryUtil.getPoemTags();
-        poem_type=PoetryUtil.getPoemType();
-        poem_style=PoetryUtil.getPoemStyle();
-        styles= PoetryUtil.getStyles();
-        ciPai=PoetryUtil.getCiPai();
-        userId=randomString(30);
-        selectedTag.put("user_id",userId);
-        System.out.println("THEFISTAPPEARUSERIDDDDD:"+selectedTag.get("user_id"));
-        toolbar=findViewById(R.id.ai_titleBar);
-        titleText=findViewById(R.id.ai_titleText);
-        poem_tag_flow=findViewById(R.id.ai_poem_tag_flow);
-        poem_style_flow=findViewById(R.id.ai_style_tag_flow);
-        inputText=findViewById(R.id.input_keyword);
-        startButton=findViewById(R.id.creating_button);
-        createdText=findViewById(R.id.created_content);
-       // ciPaiSpinner=findViewById(R.id.ai_ci_pai);
+
+    private void initView() {
+        poem_tags = PoetryUtil.getPoemTags();
+        poem_type = PoetryUtil.getPoemType();
+        poem_style = PoetryUtil.getPoemStyle();
+        styles = PoetryUtil.getStyles();
+        ciPai = PoetryUtil.getCiPai();
+        userId = randomString(30);
+        selectedTag.put("user_id", userId);
+        System.out.println("THEFISTAPPEARUSERIDDDDD:" + selectedTag.get("user_id"));
+        toolbar = findViewById(R.id.ai_titleBar);
+        titleText = findViewById(R.id.ai_titleText);
+        poem_tag_flow = findViewById(R.id.ai_poem_tag_flow);
+        poem_style_flow = findViewById(R.id.ai_style_tag_flow);
+        inputText = findViewById(R.id.input_keyword);
+        startButton = findViewById(R.id.creating_button);
+        createdText = findViewById(R.id.created_content);
+        // ciPaiSpinner=findViewById(R.id.ai_ci_pai);
         final LayoutInflater mInflater = getLayoutInflater();
         poem_tag_flow.setAdapter(new TagAdapter<String>(poem_tags) {
             @Override
@@ -106,13 +104,14 @@ public class AIPoetryActivity extends AppCompatActivity {
                 tv.setText(s);
                 return tv;
             }
+
             @Override
             public void onSelected(int position, View view) {
                 super.onSelected(position, view);
-               // ciPaiSpinner.setVisibility(View.INVISIBLE);
+                // ciPaiSpinner.setVisibility(View.INVISIBLE);
                 //if(poem_tags.get(position).equals("词"))
-                    //ciPaiSpinner.setVisibility(View.VISIBLE);
-               selectedTag.put("type",poem_type.get(poem_tags.get(position)));
+                //ciPaiSpinner.setVisibility(View.VISIBLE);
+                selectedTag.put("type", poem_type.get(poem_tags.get(position)));
                 //showSelected(selectedTag);
                 TextView textView = (TextView) view;
                 textView.setTextColor(Color.WHITE);
@@ -136,10 +135,11 @@ public class AIPoetryActivity extends AppCompatActivity {
                 tv.setText(s);
                 return tv;
             }
+
             @Override
             public void onSelected(int position, View view) {
                 super.onSelected(position, view);
-                selectedTag.put("yan",poem_style.get(styles.get(position)).toString());
+                selectedTag.put("yan", poem_style.get(styles.get(position)).toString());
                 //showSelected(selectedTag);
                 TextView textView = (TextView) view;
                 textView.setTextColor(Color.WHITE);
@@ -150,11 +150,11 @@ public class AIPoetryActivity extends AppCompatActivity {
                 super.unSelected(position, view);
                 TextView textView = (TextView) view;
                 selectedTag.remove("yan");
-               // showSelected(selectedTag);
+                // showSelected(selectedTag);
                 textView.setTextColor(getResources().getColor(R.color.colorPrimary));
             }
         });
-       // ciPaiSpinner.setItems(ciPai);
+        // ciPaiSpinner.setItems(ciPai);
 //        ciPaiSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
@@ -172,61 +172,58 @@ public class AIPoetryActivity extends AppCompatActivity {
         initView();//初始化视图
         setSupportActionBar(findViewById(R.id.ai_titleBar));//设置toolbar
         getSupportActionBar().setDisplayShowTitleEnabled(false);//屏蔽toolbar默认标题显示
-        ActionBar actionBar=getSupportActionBar();
-        if(actionBar!=null) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
         }//设置返回图标显示
 
 
-        toolbarTitle=getIntent().getStringExtra("toolBarTitle");
+        toolbarTitle = getIntent().getStringExtra("toolBarTitle");
         titleText.setText(toolbarTitle);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                System.out.println("YANNNNNNN:"+selectedTag.get("yan"));
-                System.out.println("TYPEEEEEEE:"+selectedTag.get("type"));
-                System.out.println("USERIDDDDD:"+selectedTag.get("user_id"));
-                System.out.println("KEYWORDDDDD:"+inputText.getEditValue());
+                System.out.println("YANNNNNNN:" + selectedTag.get("yan"));
+                System.out.println("TYPEEEEEEE:" + selectedTag.get("type"));
+                System.out.println("USERIDDDDD:" + selectedTag.get("user_id"));
+                System.out.println("KEYWORDDDDD:" + inputText.getEditValue());
                 createdText.setText("加载中...");
-                isCreated=false;
-                String type=selectedTag.get("type");
-                String keyword=inputText.getEditValue();
-                String address1="http://118.190.162.99:8080/sendPoem";
-                String address2="http://118.190.162.99:8080/getPoem";
-                RequestBody requestBody=new FormBody.Builder().add("type",type).add("yan",selectedTag.get("yan")).add("keyword",keyword).add("user_id",selectedTag.get("user_id")).build();
-                System.out.println("requestBody11111:"+requestBody.toString());
+                isCreated = false;
+                String type = selectedTag.get("type");
+                String keyword = inputText.getEditValue();
+                String address1 = "http://118.190.162.99:8080/sendPoem";
+                String address2 = "http://118.190.162.99:8080/getPoem";
+                RequestBody requestBody = new FormBody.Builder().add("type", type).add("yan", selectedTag.get("yan")).add("keyword", keyword).add("user_id", selectedTag.get("user_id")).build();
+                System.out.println("requestBody11111:" + requestBody.toString());
                 HttpUtil.sendPostOkHttpRequest(address1, requestBody, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        e.printStackTrace(); Message message=new Message();
-                        message.what=GET_POEM_FAIL;
+                        e.printStackTrace();
+                        Message message = new Message();
+                        message.what = GET_POEM_FAIL;
                         handler.sendMessage(message);
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String responseData = response.body().string();
-                        System.out.println("SENDPOEMRESPONSEEE:"+responseData);
+                        System.out.println("SENDPOEMRESPONSEEE:" + responseData);
                         try {
                             JSONObject jsonObject = new JSONObject(responseData);
                             if (jsonObject.get("code").equals("0000")) {
-                                System.out.println("requestBody:"+requestBody.toString());
-                                getPoem(address2,requestBody);
-                            }
-                            else
-                            {
-                                userId=randomString(30);
-                                selectedTag.put("user_id",userId);
-                                Message message=new Message();
-                                message.what=GET_POEM_FAIL;
+                                System.out.println("requestBody:" + requestBody.toString());
+                                getPoem(address2, requestBody);
+                            } else {
+                                userId = randomString(30);
+                                selectedTag.put("user_id", userId);
+                                Message message = new Message();
+                                message.what = GET_POEM_FAIL;
                                 handler.sendMessage(message);
 
                             }
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
@@ -239,51 +236,45 @@ public class AIPoetryActivity extends AppCompatActivity {
     }
 
 
-
-
-
-    private void showSelected(HashMap<String,String> temp) {
+    private void showSelected(HashMap<String, String> temp) {
         if (temp.size() > 0) {
             for (String tempString : temp.keySet())
-                System.out.println(tempString+": " + temp.get(tempString));
+                System.out.println(tempString + ": " + temp.get(tempString));
         } else
             System.out.println("没有选择");
     }
 
     //随机生成userId
-    public  String randomString(int length)
-    {
+    public String randomString(int length) {
         int len = length;
         String chars = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678";
-        int maxPos=chars.length();
+        int maxPos = chars.length();
         String pwd = "";
         for (int i = 0; i < len; i++) {
-            pwd += chars.charAt((int)Math.floor(Math.random() * maxPos));
+            pwd += chars.charAt((int) Math.floor(Math.random() * maxPos));
         }
         return pwd;
     }
 
-    private void parseCreatedPoem(String temp)
-    {
-        StringBuilder stringBuilder=new StringBuilder(temp);
-        System.out.println("TEMP:"+temp);
-        String result="";
-        stringBuilder.setCharAt(0,' ');
-        stringBuilder.setCharAt(temp.length()-1,' ');
-        temp=stringBuilder.toString().trim();
-        System.out.println("TEMP111:"+temp);
-        String[] temps=temp.split(",");
-        for(String sentence:temps)
-        {
-            result+=sentence;
-            result+="\n";
+    private void parseCreatedPoem(String temp) {
+        StringBuilder stringBuilder = new StringBuilder(temp);
+        System.out.println("TEMP:" + temp);
+        String result = "";
+        stringBuilder.setCharAt(0, ' ');
+        stringBuilder.setCharAt(temp.length() - 1, ' ');
+        temp = stringBuilder.toString().trim();
+        System.out.println("TEMP111:" + temp);
+        String[] temps = temp.split(",");
+        for (String sentence : temps) {
+            result += sentence;
+            result += "\n";
         }
-        System.out.println("RESULT:"+result);
-        createdPoem=result;
+        System.out.println("RESULT:" + result);
+        createdPoem = result;
 
     }
-    private void getPoem(String address,RequestBody requestBody)
-    {
+
+    private void getPoem(String address, RequestBody requestBody) {
         HttpUtil.sendPostOkHttpRequest(address, requestBody, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -299,18 +290,15 @@ public class AIPoetryActivity extends AppCompatActivity {
                 createdPoem = response.body().string();
                 try {
                     JSONObject jsonObject = new JSONObject(createdPoem);
-                    if(jsonObject.get("code").equals("1"))
-                    {
+                    if (jsonObject.get("code").equals("1")) {
                         parseCreatedPoem(jsonObject.get("content").toString());
                         Message message = new Message();
-                        isCreated=true;
+                        isCreated = true;
                         message.what = GET_POEM_SUCCESS;
                         handler.sendMessage(message);
-                    }
-                    else
-                    {
-                        System.out.println("_______________________________isCreated:"+isCreated);
-                       getPoem(address,requestBody);
+                    } else {
+                        System.out.println("_______________________________isCreated:" + isCreated);
+                        getPoem(address, requestBody);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

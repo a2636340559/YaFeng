@@ -1,4 +1,4 @@
-﻿package com.poet.yafeng.Service;
+package com.poet.yafeng.Service;
 
 
 import com.poet.yafeng.DAO.PoetryDAO;
@@ -6,18 +6,11 @@ import com.poet.yafeng.Modal.CommonResult;
 import com.poet.yafeng.POJO.Poetry;
 import org.omg.CORBA.PolicyError;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonObjectSerializer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 import sun.reflect.annotation.ExceptionProxy;
-import com.alibaba.fastjson.JSONObject;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -32,8 +25,6 @@ public class PoetryService {
 
     @Autowired
     private PoetryDAO poetryDAO;
-    @Autowired
-    private RestTemplate restTemplate;
 
 
     //随机获取一首诗
@@ -399,7 +390,6 @@ public class PoetryService {
             result.setResult("fail");
             result.setMsg("创作失败");
         }
-
         return result;
     }
 
@@ -410,5 +400,6 @@ public class PoetryService {
 //        return poetryDAO.get();
 //    }
 
-    
+
+
 }

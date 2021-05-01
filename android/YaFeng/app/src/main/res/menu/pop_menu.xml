@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="账号"
-        android:id="@+id/account"
-        android:icon="@drawable/ic_navigate1">
+            android:title="账号"
+            android:id="@+id/account"
+            android:icon="@drawable/ic_navigate1">
     </item>
 
 
     <item android:id="@+id/collect"
-        android:title="收藏"/>
+          android:title="收藏"/>
 </menu>
